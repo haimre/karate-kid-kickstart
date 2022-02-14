@@ -1,18 +1,23 @@
 const storage = require('./modules/storage.js')
-const {getValue,setValue,getInnerText,setInnerText,addEvent} = require('./modules/helper-functions.js')
+const { getValue,
+        setValue,
+        getInnerText,
+        setInnerText,
+        addEvent} = require('./modules/helperFunctions.js')
+const { titleInputID,
+        addButtonID,
+        contentInputID,
+        applyButtonID,
+        cancelButtonID,
+        clearButtonID,
+        cleanButtonID,
+        todoListID,
+        menuID,
+        enterKeycode,
+        escapeKeycode } = require('./modules/IDs.js')
 
 let editedID = 0;
 let editMode = false;
-
-const titleInputID = 'title-input'
-const addButtonID = 'add-button'
-const contentInputID = 'content-input'
-const applyButtonID = 'apply-button'
-const cancelButtonID = 'cancel-button'
-const clearButtonID = 'clear-button'
-const cleanButtonID = 'clean-button'
-const todoListID = 'list'
-const menuID = 'menu'
 
 function getNewID(){
     return new Date().getTime().toString()
@@ -192,15 +197,13 @@ function showItemsFromLocalStorage(){
 window.onload = function(){
 
     document.body.addEventListener('keyup', function (event){
-        // 27 -> escape key
-        if (event.keyCode === 27){
+        if (event.keyCode === escapeKeycode){
             document.getElementById(cancelButtonID).click()
             document.getElementById(titleInputID).focus()
         }
     })
     addEvent(menuID,'keyup',function(event) {
-        // 13 -> enter key
-        if (event.keyCode === 13) {
+        if (event.keyCode === enterKeycode) {
             document.getElementById(applyButtonID).click()
             document.getElementById(titleInputID).focus()
         }
