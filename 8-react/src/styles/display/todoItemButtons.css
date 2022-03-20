@@ -1,0 +1,34 @@
+.todoItemButtons{ 
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+}
+.itemEditButton{
+    font-family: Material Icons;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    background-color: greenyellow;
+    opacity: 1;
+    animation: fade 2s linear;
+}
+.itemEditButton:hover{
+    background-color: seagreen
+}
+.itemDeleteButton{
+    font-family: Material Icons;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    background-color: tomato;
+}
+.itemDeleteButton:hover{
+    background-color: crimson;
+}

@@ -1,0 +1,15 @@
+.menu{
+    background-color: whitesmoke; 
+    padding: 10px;
+    border-right: solid 2px grey;
+}
+.menu:hover{
+    background-color: rgb(218, 209, 209); 
+}
+.menuInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 5px;
+    width: 100%;
+}

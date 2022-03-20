@@ -1,0 +1,9 @@
+.inp{
+    margin: 0px 10px;
+}
+.inp::-webkit-input-placeholder {
+    color: #b2cde0
+ }
+.inp:hover{
+    transform: scale(1.1);
+}
