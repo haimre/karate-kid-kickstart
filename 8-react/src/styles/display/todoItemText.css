@@ -1,13 +1,15 @@
-.todoItemText{
-    display: flex; 
+.todoItemText {
+    display: flex;
     flex-direction: column;
     align-self: stretch;
 }
-.todoItemTitle{
+
+.todoItemTitle {
     font-size: 20px;
     font-weight: bold;
 }
-.todoItemContent{
+
+.todoItemContent {
     font-weight: thin;
     padding-left: 15px;
     color: grey;

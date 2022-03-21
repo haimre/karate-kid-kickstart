@@ -1,10 +1,12 @@
 import React from "react";
-import Item from '../../interfaces/Item'
+import Item from '../../../interfaces/Item'
 import '../../styles/display/todoItemButtons.css'
-const ItemButtons= (props:Partial<Item>) => {
+import { deleteButton } from "../../eventHandlers/click/deleteButton";
+import { editButton } from "../../eventHandlers/click/editButton";
+const ItemButtons = (props: Partial<Item>) => {
     return (<div className='todoItemButtons'>
-        <button className='itemEditButton' id={`title${props._id}`}>edit</button>
-        <button className='itemDeleteButton' id={`content${props._id}`}>delete</button>
+        <button id={`itemEdit${props._id}`} className='itemEditButton' onClick={editButton}>edit</button>
+        <button id={`itemDelete${props._id}`} className='itemDeleteButton' onClick={deleteButton}>delete</button>
     </div>)
 }
 export default ItemButtons

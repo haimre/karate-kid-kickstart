@@ -1,14 +1,13 @@
 import React from "react";
 import TODOList from "./TODOList";
-import Item from "../../interfaces/Item";
+import Item from "../../../interfaces/Item";
 import '../../styles/display/display.css';
 import '../../styles/buttons.css'
-const Display = () =>{
-    const itemList:Partial<Item>[] = []
+const Display = (props: { itemList: Item[] }) => {
     return (<div className='display'>
-        <TODOList/>
+        <TODOList items={props.itemList} />
         <button id='add-button' className='btn'>Add a new todo item</button>
         <button id='clean-button' className='btn'>Removed checked</button>
-        </div>)
+    </div>)
 }
 export default Display

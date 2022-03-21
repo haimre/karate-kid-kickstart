@@ -1,11 +1,12 @@
-.todoItemButtons{ 
+.todoItemButtons {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.itemEditButton{
-    font-family: Material Icons;
+
+.itemEditButton {
+    font-family: 'Material Icons';
     font-size: 30px;
     text-align: center;
     color: white;
@@ -16,11 +17,13 @@
     opacity: 1;
     animation: fade 2s linear;
 }
-.itemEditButton:hover{
+
+.itemEditButton:hover {
     background-color: seagreen
 }
-.itemDeleteButton{
-    font-family: Material Icons;
+
+.itemDeleteButton {
+    font-family: 'Material Icons';
     font-size: 30px;
     text-align: center;
     color: white;
@@ -29,6 +32,7 @@
     border-radius: 30%;
     background-color: tomato;
 }
-.itemDeleteButton:hover{
+
+.itemDeleteButton:hover {
     background-color: crimson;
 }
