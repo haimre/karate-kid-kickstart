@@ -1,5 +1,5 @@
-export const itemCheckboxClick = (event: Event): void => {
-    const target:HTMLInputElement =  event.target as HTMLInputElement
+export default function itemCheckboxClick(event: Event): void {
+    const target: HTMLInputElement = event.target as HTMLInputElement
     const itemID: string = target.id.replace('itemCheckbox', '').toString()
     const titleElement: HTMLElement = document.getElementById(`title${itemID}`) as HTMLElement
     const contentElement: HTMLElement = document.getElementById(`content${itemID}`) as HTMLElement

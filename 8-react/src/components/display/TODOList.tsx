@@ -1,16 +1,22 @@
 import React from "react";
 import TODOItem from "./TODOItem";
 import Item from '../../../interfaces/Item'
-const ItemList = (props: { items: Item[] }) => {
+export default function ItemList(props: {
+    items: Item[],
+    setMenuItem: (item: Partial<Item>) => void,
+    getMenuItem: () => Item,
+    removeItem: (_id: string) => void
+}) {
+    let checked = false
     return (<ul id='list' className='list'>
         {props.items.map((item: Item) => (
             <TODOItem
                 key={item._id}
-                _id={item._id}
-                userID={item.userID}
-                title={item.title}
-                content={item.content} />
+                item={item}
+                checked={checked}
+                removeItem={props.removeItem}
+                setMenuItem={props.setMenuItem}
+                getMenuItem={props.getMenuItem} />
         ))}
     </ul>)
 }
-export default ItemList

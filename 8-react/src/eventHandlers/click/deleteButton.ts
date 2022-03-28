@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react'
 import * as constants from '../../modules/constants'
 import * as serverAPI from '../../modules/serverAPI'
-export const deleteButton= async (event: MouseEvent<HTMLButtonElement>): Promise<void> => {
+export default async function deleteButton(event: MouseEvent<HTMLButtonElement>): Promise<void> {
     // if (editMode) {
     //     alert('cant delete while in edit mode')
     //     return

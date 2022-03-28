@@ -4,11 +4,16 @@ import ItemText from "./TODOItemText";
 import ItemButtons from "./TODOItemButtons";
 import '../../styles/display/todoItem.css'
 import '../../styles/inputs.css'
-const TODOItem = (props: Partial<Item>) => {
-    return (<ol id={props._id} className='todoItem'>
-        <input className='inp' id={`itemCheckbox${props._id}`} type='checkbox' />
-        <ItemText _id={props._id} title={props.title} content={props.content} />
-        <ItemButtons _id={props._id} />
+export default function TODOItem(props: {
+    checked: boolean,
+    item: Partial<Item>,
+    setMenuItem: (item: Partial<Item>) => void,
+    getMenuItem: () => Item,
+    removeItem: (_id: string) => void
+}) {
+    return (<ol id={props.item._id} className='todoItem'>
+        <input className='inp' id={`itemCheckbox${props.item._id}`} type='checkbox' checked={props.checked}/>
+        <ItemText _id={props.item._id} title={props.item.title} content={props.item.content} />
+        <ItemButtons item={props.item} setMenuItem={props.setMenuItem} getMenuItem={props.getMenuItem} removeItem={props.removeItem}/>
     </ol>)
 }
-export default TODOItem

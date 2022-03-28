@@ -1,7 +1,9 @@
 import * as constants from '../../modules/constants'
 import * as docUtil from '../../modules/documentUtility'
 import * as serverAPI from '../../modules/serverAPI'
-export function menuButton(): void {
+import clearMenu from './clearMenu'
+import Item from '../../../interfaces/Item'
+export default function menuButton(editedID:string): void {
     // if (!editMode) {
     //     addItem()
     // } else {

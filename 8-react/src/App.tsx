@@ -4,15 +4,9 @@ import Body from "./components/body/Body"
 import Item from '../interfaces/Item'
 import * as constants from './modules/constants'
 import * as docUtil from './modules/documentUtility'
-import { enterKeyPress } from "./eventHandlers/keyup/enter"
-import { escapekeyPress } from "./eventHandlers/keyup/escape"
-import { clearMenu } from "./eventHandlers/click/clearMenu"
-import { cancelEdit } from "./eventHandlers/click/cancelEdit"
-import { addButton } from "./eventHandlers/click/addButton"
-import { menuButton } from "./eventHandlers/click/menuButton"
-import { deleteCheckedItems } from "./eventHandlers/click/deleteCheckedItems"
+import escapeKeyPress from "./eventHandlers/keypress/escape"
 import * as serverAPI from './modules/serverAPI'
-const App = () => {
+export default function App() {
     const emptyItemList: Item[] = [{
         "_id": "1645000964206",
         "userID": "621750a80248c76d9cdf3435",
@@ -29,29 +23,45 @@ const App = () => {
         "title": "Delete items",
         "content": "Press the red button to the right\n or check the item/s and click 'Remove checked'"
     }]
+    const emptyMenu = {
+        _id: '',
+        userID: '',
+        title: '',
+        content: ''
+    }
+    const [menuItem, setEditedItem] = useState(emptyMenu)
     const [itemList, setItemList] = useState(emptyItemList)
-
-    const setItem = (item: Item) => {
+    const setMenuItem = (newItem: Partial<Item> | undefined): void =>
+        !newItem ? setEditedItem(emptyMenu) :
+            setEditedItem((oldItem) => { return { ...oldItem, ...newItem } })
+    const getMenuItem = (): Item => menuItem
+    const setItem = (item: Item): void => {
         setItemList((prevState: Item[]) => {
             const index = prevState.findIndex(prevItem => prevItem._id == item._id)
-            index > 0 ? prevState[index]=item : prevState = [item,...prevState]
+            index >= 0 ? prevState[index] = item : prevState = [item, ...prevState]
             return [...prevState]
         })
     }
-
-    window.onload = function (): void {
-        // document.body.addEventListener('keyup', enterKeyPress)
-        // docUtil.addEvent(constants.menuID, 'keyup', escapekeyPress) 
-        docUtil.addEvent(constants.applyButtonID, 'click', menuButton)
-        docUtil.addEvent(constants.cancelButtonID, 'click', cancelEdit)
-        docUtil.addEvent(constants.cleanButtonID, 'click', deleteCheckedItems)
-        serverAPI.getAll()
-            .then((items: Item[]) => setItemList(items))
-            .catch(()=>useState(emptyItemList))
+    const removeItem = (_id: string): void => {
+        setItemList((prevState: Item[]) => {
+            return prevState.filter((itemFromList: Item) => itemFromList._id != _id)
+        })
     }
-    return <div className='App' onKeyPress={escapekeyPress}>
+    serverAPI.getAll()
+        .then((items: Item[]) => setItemList(items))
+        .catch(() => useState(emptyItemList))
+
+    return <div className='App' onKeyUp={escapeKeyPress}>
+        <div>
+            <br></br>
+            _id:'{menuItem._id}', title:'{menuItem.title}', content:'{menuItem.content}'
+        </div>
         <Header />
-        <Body itemList={itemList} setItem={setItem} onKeyUp={enterKeyPress}/>
+        <Body
+            itemList={itemList}
+            setItem={setItem}
+            removeItem={removeItem}
+            setMenuItem={setMenuItem}
+            getMenuItem={getMenuItem} />
     </div>
 }
-export default App

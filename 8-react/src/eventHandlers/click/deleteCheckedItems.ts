@@ -1,7 +1,7 @@
 import * as constants from '../../modules/constants'
 import * as serverAPI from '../../modules/serverAPI'
 import Item from '../../../interfaces/Item'
-export function deleteCheckedItems(): void {
+export default function deleteCheckedItems(): void {
     // if (editMode) {
     //     alert('cant delete while in edit mode')
     //     return

@@ -14,7 +14,6 @@ export class MongoDBController extends dbController implements DB {
         super()
     }
     getAllItemsFromDB = async (userID: string): Promise<Item[]> => {
-        console.log('yo!',userID)
         return await itemModel.find({ userID: userID }).lean(true)
     }
     setItemInDB = async (userID: string, _id: string, title: string, content: string): Promise<Item> => {
