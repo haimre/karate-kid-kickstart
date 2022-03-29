@@ -1,15 +1,11 @@
-import React from "react";
-import TODOItem from "./TODOItem";
+import React from 'react'
+import TODOItem from './TODOItem'
 import Item from '../../../interfaces/Item'
-export default function ItemList(props: {
-    items: Item[],
-    setMenuItem: (item: Partial<Item>) => void,
-    getMenuItem: () => Item,
-    removeItem: (_id: string) => void
-}) {
+import DisplayProps from '../../../interfaces/types/DisplayProps'
+export default function ItemList(props: DisplayProps) {
     let checked = false
     return (<ul id='list' className='list'>
-        {props.items.map((item: Item) => (
+        {props.itemList.map((item: Item) => (
             <TODOItem
                 key={item._id}
                 item={item}

@@ -1,25 +1,22 @@
-import React from "react";
-import TODOList from "./TODOList";
-import Item from "../../../interfaces/Item";
-import '../../styles/display/display.css';
+import React from 'react'
+import TODOList from './TODOList'
+import Item from '../../../interfaces/Item'
+import DisplayProps from '../../../interfaces/types/DisplayProps'
+import '../../styles/display/display.css'
 import '../../styles/buttons.css'
-export default function Display(props: {
-    itemList: Item[],
-    removeItem: (_id: string) => void
-    setMenuItem: (item: Partial<Item>) => void,
-    getMenuItem: () => Item
-}) {
+
+export default function Display(props: DisplayProps) {
     function addButtonClick(): void {
-        if(props.getMenuItem()._id) return alert(`can't add new item while in editing mode`)
+        if (props.getMenuItem()._id) return alert(`can't add new item while in editing mode`)
         props.setMenuItem({ _id: '', title: '', content: '' })
     }
-    function cleanButtonClick():void{
-        if(props.getMenuItem()._id) return alert(`can't delete items while editing in editing mode`)
-        props.itemList.forEach((item:Item)=>{ })
+    function cleanButtonClick(): void {
+        if (props.getMenuItem()._id) return alert(`can't delete items while editing in editing mode`)
+        props.itemList.forEach((item: Item) => { })
     }
     return (<div className='display'>
         <TODOList
-            items={props.itemList}
+            itemList={props.itemList}
             removeItem={props.removeItem}
             getMenuItem={props.getMenuItem}
             setMenuItem={props.setMenuItem} />

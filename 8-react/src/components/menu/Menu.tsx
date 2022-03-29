@@ -1,14 +1,10 @@
-import React from "react";
-import MenuInput from "./MenuInput";
-import MenuButtons from "./MenuButtons";
-import enterKeyPress from "../../eventHandlers/keypress/enter";
-import Item from "../../../interfaces/Item";
+import React from 'react'
+import MenuInput from './MenuInput'
+import MenuButtons from './MenuButtons'
+import MenuProps from '../../../interfaces/types/MenuProps'
 import '../../styles/menu/menu.css'
-export default function Menu(props: {
-    setItem: (item: Item) => void,
-    setMenuItem: (item?: Partial<Item> | undefined) => void,
-    getMenuItem: () => Item
-}) {
+
+export default function Menu(props: MenuProps) {
 
     return (<div id='menu' className='menu'>
         <div className='menu-title'>

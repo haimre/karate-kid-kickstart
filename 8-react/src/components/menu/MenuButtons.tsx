@@ -1,14 +1,11 @@
+import { v4 as uuid } from 'uuid'
 import React from 'react'
-import '../../styles/menu/menuButtons.css'
-import '../../styles/buttons.css'
 import Item from '../../../interfaces/Item'
 import * as ServerAPI from '../../modules/serverAPI'
-import { v4 as uuid } from 'uuid'
-export default function MenuButtons(props: {
-    setItem: (item: Item) => void,
-    setMenuItem: (item?: Partial<Item> | undefined) => void,
-    getMenuItem: () => Item
-}) {
+import MenuProps from '../../../interfaces/types/MenuProps'
+import '../../styles/menu/menuButtons.css'
+import '../../styles/buttons.css'
+export default function MenuButtons(props: MenuProps) {
     function applyButtonClick(): void {
         let { _id, title, content } = props.getMenuItem()
         if (!title) return alert(`can't set an empty title`)
